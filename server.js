@@ -6,7 +6,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
-const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const errorHandler = require('./middleware/error');
@@ -39,9 +38,6 @@ app.use(express.json());
 
 // Cookies
 app.use(cookieParser());
-
-// Prevent XSS
-app.use(xss());
 
 // Sanitize Mongo queries
 app.use(mongoSanitize());
