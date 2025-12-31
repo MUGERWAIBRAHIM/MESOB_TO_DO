@@ -40,10 +40,14 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Sanitize Mongo queries
-app.use(mongoSanitize());
+app.use((req, res, next) => {
+    if (req.body) req.body = mongoSanitize.sanitize(req.body);
+    // Don't touch req.query
+    next();
+});
 
 // Prevent HTTP param pollution
-app.use(hpp());
+app.use(hpp({ checkBody: true }));
 
 // Rate limiting
 app.use(
