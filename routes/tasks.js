@@ -27,4 +27,3 @@ router.route('/:id')
 router.put('/:id/toggle', toggleTaskCompletion);
 
 module.exports = router;
-
