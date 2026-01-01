@@ -2,7 +2,8 @@ const express = require('express');
 const { 
     register, 
     login, 
-    getMe 
+    getMe,
+    updateMe // <--- new
 } = require('../controllers/authController');
 const { protect } = require('../middleware/auth');
 
@@ -14,5 +15,6 @@ router.post('/login', login);
 
 // Protected routes
 router.get('/me', protect, getMe);
+router.put('/me', protect, updateMe); // <--- new update endpoint
 
 module.exports = router;

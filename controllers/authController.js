@@ -59,6 +59,31 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     });
 });
 
+// @desc    Update current logged in user
+// @route   PUT /api/auth/me
+// @access  Private
+exports.updateMe = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id).select('+password');
+
+    if (!user) {
+        return next(new ErrorResponse('User not found', 404));
+    }
+
+    const { name, email, password } = req.body;
+
+    // Only update provided fields
+    if (name) user.name = name;
+    if (email) user.email = email;
+    if (password) user.password = password; // Will be hashed automatically if pre-save middleware exists
+
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        data: user
+    });
+});
+
 // Get token from model, create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
     // Create token
