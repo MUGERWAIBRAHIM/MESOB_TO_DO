@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        h1 {
+            color: #6c5ce7;
+            margin-bottom: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .endpoints {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid #6c5ce7;
+        }
+        .method {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            color: white;
+        }
+        .get { background-color: #2ecc71; }
+        .post { background-color: #3498db; }
+        .put { background-color: #f39c12; }
+        .delete { background-color: #e74c3c; }
+        .path {
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .description {
+            margin-top: 0.5rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>📝 Todo App API</h1>
+            <p>Welcome to the Todo App API. Use the following endpoints to interact with the application.</p>
+            
+            <div class="endpoints">
+                <h2>Authentication</h2>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method post">POST</span>
+                        <span class="path">/api/v1/auth/register</span>
+                    </div>
+                    <div class="description">Register a new user</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method post">POST</span>
+                        <span class="path">/api/v1/auth/login</span>
+                    </div>
+                    <div class="description">Login user and get token</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method get">GET</span>
+                        <span class="path">/api/v1/auth/me</span>
+                    </div>
+                    <div class="description">Get current logged in user (requires authentication)</div>
+                </div>
+                
+                <h2>Tasks</h2>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method get">GET</span>
+                        <span class="path">/api/v1/tasks</span>
+                    </div>
+                    <div class="description">Get all tasks for the authenticated user</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method post">POST</span>
+                        <span class="path">/api/v1/tasks</span>
+                    </div>
+                    <div class="description">Create a new task</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method get">GET</span>
+                        <span class="path">/api/v1/tasks/:id</span>
+                    </div>
+                    <div class="description">Get a single task by ID</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method put">PUT</span>
+                        <span class="path">/api/v1/tasks/:id</span>
+                    </div>
+                    <div class="description">Update a task</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method delete">DELETE</span>
+                        <span class="path">/api/v1/tasks/:id</span>
+                    </div>
+                    <div class="description">Delete a task</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="method put">PUT</span>
+                        <span class="path">/api/v1/tasks/:id/toggle</span>
+                    </div>
+                    <div class="description">Toggle task completion status</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Getting Started</h2>
+            <p>To get started, register a new user and use the returned JWT token to authenticate your requests.</p>
+            <p>Include the token in the Authorization header as: <code>Bearer YOUR_TOKEN_HERE</code></p>
+        </div>
+    </div>
+</body>
+</html>
